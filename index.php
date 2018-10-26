@@ -14,8 +14,8 @@ class Dog extends Animal
 
   public function __construct($name, $age=1)
   {
-    $this->name = $name;
-    $this->age = $age;
+    $this->name = $name;  var_dump('----------1-----------'); //$nameを確認
+    $this->age = $age;  var_dump('----------2-----------');  //$ageを確認
   }
 }
 
@@ -30,17 +30,20 @@ class MechaDog extends Dog
       'apache' => 'apache',
       'bsd' => 'mit',
       'chef' => 'apache'
-    );
+    );  var_dump('----------3-----------');  //$dataを確認
   }
 
   public function proc($arg)
   {
     $path = explode("/", explode(" ", $arg)[0]);
+     var_dump('----------4-----------');  //$argを確認
     array_shift($path);
+    var_dump('----------5-----------');  //$pathを確認
     if( is_null($path) ) {
       $keys = array();
       while (list($key, $val) = each($this->data)) {
         array_push($keys, $key);
+        var_dump('----------6-----------');  //$keyを確認
       }
       var_dump($keys);
     }
