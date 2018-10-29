@@ -14,8 +14,8 @@ class Dog extends Animal
   public $age;
   public function __construct($name, $age=1)
   {
-    $this->name = $name;
-    $this->age = $age;
+    $this->name = $name;  var_dump('----------2-----------');  //$nameを確認
+    $this->age = $age;  var_dump('----------3-----------');  //$ageを確認
   }
 }
 class MechaDog extends Dog
@@ -33,8 +33,6 @@ class MechaDog extends Dog
   public function proc($arg)
   {
     $path = explode("/", explode(" ", $arg)[0]);
-     var_dump('----------2-----------');  //explodされる前の$argの中身を確認
-     var_dump('----------3-----------');  //explodされた$pathの中身を確認
     array_shift($path);
      var_dump('----------4-----------');  //array_shiftされた$pathの中身を確認
     if( is_null($path) ) {
@@ -47,9 +45,11 @@ class MechaDog extends Dog
     else if(count($path) == 2){
       $this->data[$path[0]] = $path[1];
       echo $path[1] . PHP_EOL;
+      var_dump('----------5-----------'); //$pathの中身を確認。else ifを通っているか確認
     }
     else {
       echo $path[0] . "=>" . $this->data[$path[0]] . PHP_EOL;
+      var_dump('----------6-----------'); //elseを通ったあとの$pathと$dataの中身を確認。
     }
   }
 }
