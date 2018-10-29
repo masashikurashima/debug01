@@ -8,23 +8,19 @@ class Animal
     echo 'Yeah, it’s barking.' . PHP_EOL;
   }
 }
-
 class Dog extends Animal
 {
   public $name;
   public $age;
-
   public function __construct($name, $age=1)
   {
     $this->name = $name;
     $this->age = $age;
   }
 }
-
 class MechaDog extends Dog
 {
   private $data;
-
   public function __construct($name, $age=1)
   {
     parent::__construct($name);
@@ -34,12 +30,13 @@ class MechaDog extends Dog
       'chef' => 'apache'
     );
   }
-
   public function proc($arg)
   {
     $path = explode("/", explode(" ", $arg)[0]);
+     var_dump('----------2-----------');  //explodされる前の$argの中身を確認
+     var_dump('----------3-----------');  //explodされた$pathの中身を確認
     array_shift($path);
-    var_dump($path); //ここの変数が「GET」になっているが、「bsd」になるべき
+     var_dump('----------4-----------');  //array_shiftされた$pathの中身を確認
     if( is_null($path) ) {
       $keys = array();
       while (list($key, $val) = each($this->data)) {
@@ -56,8 +53,7 @@ class MechaDog extends Dog
     }
   }
 }
-
-$mdog = new MechaDog('tom');
+$mdog = new MechaDog('tom'); var_dump('----------1-----------'); //$mdogを確認
 $mdog->bark();
 echo $mdog->name . PHP_EOL;
 echo $mdog->age . PHP_EOL;
