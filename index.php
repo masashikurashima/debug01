@@ -52,7 +52,7 @@ class MechaDog extends Dog
     }
     else {
       echo $path[0] . "=>" . $this->data[$path[0]] . PHP_EOL;
-      // この変数の内容が「array(0) { }」になっているが、「array(1) { [0]=> string(3) "bsd" }」になるべき
+      // この変数の内容が「空の配列を参照」になっているが、「bsd=>mit」になるべき
       var_dump($path); //elseを通っているか確認。$pathと$dataの中身を確認。
     }
   }
