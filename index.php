@@ -37,7 +37,8 @@ class MechaDog extends Dog
   {
     $path = explode("/", explode(" ", $arg)[0]);
     array_shift($path);
-     var_dump('----------4-----------');  //array_shiftされた$pathの中身を確認
+     var_dump($path);  //array_shiftされた$pathの中身を確認
+     // この変数の内容が「array(0) { }」になっているが、「array(1) { [0]=> string(3) "bsd" }」になるべき
     if( is_null($path) ) {
       $keys = array();
       while (list($key, $val) = each($this->data)) {
@@ -52,7 +53,8 @@ class MechaDog extends Dog
     }
     else {
       echo $path[0] . "=>" . $this->data[$path[0]] . PHP_EOL;
-      var_dump('----------6-----------'); //elseを通っているか確認。$pathと$dataの中身を確認。
+      var_dump($path); //elseを通っているか確認。$pathと$dataの中身を確認。
+      // この変数の内容が「array(0) { }」になっているが、「array(1) { [0]=> string(3) "bsd" }」になるべき
     }
   }
 }
